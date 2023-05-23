@@ -84,7 +84,10 @@ namespace LeaveManagementWeb.Controllers
             {
                 return NotFound();
             }
-            return View(leaveType);
+
+            var leaveTypeVM = mapper.Map<LeaveTypeVM>(leaveType);
+            return View(leaveTypeVM);
+            //this is returning the record find in the dB (data model) - we have changed to return leaveTypeVM
         }
 
         // POST: LeaveTypes/Edit/5
