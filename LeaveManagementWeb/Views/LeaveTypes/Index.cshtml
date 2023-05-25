@@ -29,10 +29,10 @@
                 @Html.DisplayFor(modelItem => item.DefaultDays)
             </td>
             <td>
-                <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Edit" class="btn btn-warning col-2" asp-route-id="@item.Id"><i class="fa-solid fa-pen-to-square"></i></a> |
+                    <a asp-action="Details" class="btn btn-info col-2" asp-route-id="@item.Id"><i class="fa-solid fa-info"></i></a> |
                 @*<a asp-action="Delete" class="btn btn-danger deleteBtn"asp-route-id="@item.Id">Delete</a> ORIGINAL DELETE BTN*@
-                <button data-id="@item.Id" class="btn btn-danger deleteBtn" type="button">Delete</button>
+                    <button data-id="@item.Id" class="btn btn-danger deleteBtn col-2" type="button"> <i class="fa-regular fa-trash-can"></i></button>
             </td>
          </tr>
          }
@@ -47,9 +47,14 @@
     <input type="hidden" id="leaveTypeId" name="Id" />
 </form>
 
+@*This section below is to bypass the default GET: LeaveTypes/Delete in the controller, for better UX*@
 @section Scripts{
     <script>
         $(function(){
+
+            
+            $('.table').DataTable();
+            
             $('.deleteBtn').click(function(e) {
                 swal({
                     title: "Are you sure?",
